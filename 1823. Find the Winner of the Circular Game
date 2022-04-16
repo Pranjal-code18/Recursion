@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int winner(vector<int>& v , int k  ,int index){
+        int res;
+        if(v.size()==1){return v[0];}
+            index=(index+(k-1))%v.size();
+            v.erase(v.begin()+index);
+            winner(v,k,index);
+        return v[0];
+    }
+    int findTheWinner(int n, int k) {
+        vector<int>v;
+        for(int i=1 ; i<=n ; i++){
+            v.push_back(i);
+        }
+        int ans=winner(v,k,0);
+        return ans;
+    }
+};
